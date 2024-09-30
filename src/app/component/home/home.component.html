@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="bienve text-center">
+    <h1>Bienvenidos a Nuestra Tienda</h1>
+  <p>Encuentra los mejores productos a los mejores precios.</p>
+  </div>
+
+  <div class="row" >
+    <select name="miselect" [(ngModel)]="opcionSeleccionado" class="form-select" aria-label="Default select example" (change)="capturar()">
+      <option selected>All</option>
+      <option [value]="item" *ngFor="let item of category">{{item}}</option>
+      </select>
+    <div class="col col-lg-4 text-center" *ngFor="let item of listaProductos, let indice=index">
+      <div class="card" style="width: 18rem;">
+        <img src={{item.images[0]}} class="card-img-top" alt="..." style="height: 220px;">
+        <div class="card-body" style="height: 200px; overflow: hidden;"> <!-- Añadido overflow hidden -->
+          <h5 class="card-title">{{item.title.length > 30 ? (item.title | slice:0:30) + '...' : item.title}}</h5> <!-- Acortado título -->
+          <h6 class="card-text">{{item.category}}</h6>
+          <p class="card-text">{{item.description.length > 100 ? (item.description | slice:0:100) + '...' : item.description}}</p> <!-- Acortado descripción -->
+          <h6 class="card-text">Precio : ${{item.price}}</h6>
+          <h6 class="card-text">Descuento : %{{item.discountPercentage}}</h6>
+        </div>
+        <div class="card-footer text-center" >
+          <button type="submit" [routerLink]="['/producto']" routerLinkActive="router-link-active"  class="btn btn-primary" (click)="enviar(item)">Ver</button>
+          <button type="submit"   class="btn btn-success" (click)="comprar(item)" style="margin-left: 10px;">Comprar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

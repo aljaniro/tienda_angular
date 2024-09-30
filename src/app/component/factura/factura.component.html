@@ -1,0 +1,67 @@
+<div class="container text-center" style="margin-top: 20px">
+  <div *ngIf="lista.length == 0">
+    <h1>INGRESE SUS PRODUCTOS</h1>
+  </div>
+
+  <section class="detalles" *ngIf="lista.length > 0">
+    <div
+      class="factura border border-success p-2 mb-2 border-opacity-50 text-center"
+      *ngFor="let product of lista; let indice = index"
+    >
+      <div class="imagen">
+        <img
+          src="{{ product.image }}"
+          class="img-fluid rounded-start"
+          alt="..."
+          style="height: 250px; margin-top: 20px"
+        />
+      </div>
+      <div class="datos">
+        <div class="card-body" style="height: 100%">
+          <h1 class="card-title">{{ product.title }}</h1>
+          <h3 class="card-title">{{ product.category }}</h3>
+          <p class="card-text">{{ product.description }}</p>
+          <h5>
+            Precio : $
+            {{
+              (
+                product.price -
+                product.price * (product.discount / 100)
+              ).toFixed(3)
+            }}
+          </h5>
+          <h5>
+            Cantidad :
+            <button class="btn btn-danger" (click)="disminuir(indice, product)">
+              -
+            </button>
+            {{ product.cantidad }}
+            <button class="btn btn-primary" (click)="aumentar(indice, product)">
+              +
+            </button>
+          </h5>
+          <h5>
+            Total : $
+            {{
+              (
+                (product.price - product.price * (product.discount / 100)) *
+                product.cantidad
+              ).toFixed(3)
+            }}
+          </h5>
+        </div>
+      </div>
+    </div>
+    <h1>
+      TOTAL A PAGAR :
+      <button
+        type="button"
+        (click)="pago()"
+        class="btn btn-dark"
+        style="width: 200px; font-weight: 600; font-size: x-large"
+      >
+        {{ total.toFixed(3) }}
+      </button>
+    </h1>
+  </section>
+</div>

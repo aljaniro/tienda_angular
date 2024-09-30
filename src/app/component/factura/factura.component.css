@@ -1,0 +1,24 @@
+.factura{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20px;
+  height: 350px;
+
+}
+
+.imagen{
+  width: 50%;
+  height: 300px;
+
+
+}
+.datos{
+  padding: 30px;
+  width: 50%;
+
+  height: 300px;
+
+}
+
+

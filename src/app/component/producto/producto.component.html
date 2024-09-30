@@ -1,0 +1,28 @@
+
+<div class="container text-center" *ngIf="product.title != '' ">
+  <div class="card mb-3" style="width: 100%">
+    <div class="row g-0">
+      <div class="col-md-6" style="height: 550px">
+        <img
+          src="{{ product.image }}"
+          class="img-fluid rounded-start"
+          alt="..."
+          style="height: 100%"
+        />
+      </div>
+      <div class="col-md-6 text-center" style="height: 550px">
+        <div class="card-body" style="height: 100%">
+          <h1 class="card-title">{{ product.title }}</h1>
+          <h3 class="card-title">{{ product.category }}</h3>
+          <p class="card-text">{{ product.description }}</p>
+          <h6>Precio : ${{ product.price }}</h6>
+          <h6>Descuento : %{{ product.discount }}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" title="Volver" [routerLink]="['/home']" routerLinkActive="router-link-active" ><i class="fa-solid fa-arrow-left"></i></button>
+  <button class="btn btn-success" title="Comprar" (click)="showSuccess()"   style="margin-left: 10px;margin-right: 10px;"><i class="fas fa-shopping-bag"></i></button>
+  <button class="btn btn-info" title="Listado" [routerLink]="['/factura']" routerLinkActive="router-link-active" ><i class="fa-solid fa-arrow-right"></i></button>
+</div>
+
